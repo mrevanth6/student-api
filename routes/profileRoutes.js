@@ -1,0 +1,10 @@
+const express = require('express');
+const { profileUpdate, getAllProfiles, getProfileById, updateProfileById, deleteProfileById } = require('../controllers/profileController');
+const { authenticateToken } = require('../middleware/authenticateToken');
+const router = express.Router();
+router.patch('/updateProfile', authenticateToken, profileUpdate);
+router.get("/profiles", authenticateToken, getAllProfiles);
+router.get("/profile/:id", authenticateToken, getProfileById);
+router.patch("/profile/update/:id", authenticateToken, updateProfileById);
+router.delete("/profile/delete/:id", authenticateToken, deleteProfileById);
+module.exports = router;
